@@ -17,12 +17,13 @@ class App extends React.Component {
             return { num: state.num + 1 };
         })
     }
+
     render() {
         return (
             <div>
                 <ErrorBoundary>
                     {
-                        this.state.num < 8
+                        this.state.num < 4
                             ? <HelloWorld num={this.state.num} />
                             : <div>HelloWorld Component Unmounted</div>
                     }

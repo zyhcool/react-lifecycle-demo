@@ -1,6 +1,5 @@
 import * as React from "react";
 
-let ii = "jj";
 export default class HelloWorld extends React.Component {
     constructor(props) {
         super(props);
@@ -11,16 +10,18 @@ export default class HelloWorld extends React.Component {
     }
     componentDidMount() {
         console.log("DidMount");
+        this.setState({
+            text: "setState from componentDidMount",
+        })
     }
     static getDerivedStateFromProps(state, props) {
         console.log("getDerivedStateFromProps");
-        console.log(state);
-        console.log(props);
-        return { text: "from getDerivedStateFromProps" }
+        // return { text: "from getDerivedStateFromProps" }
+        return null;
     }
     shouldComponentUpdate(nextProps, nextState) {
         console.log("shouldComponentUpdate");
-        if (nextProps.num < 4) {
+        if (nextProps.num < 3) {
             return true;
         } else {
             return false;
@@ -37,14 +38,11 @@ export default class HelloWorld extends React.Component {
     componentWillUnmount() {
         console.log("WillUnmount")
     }
-    componentDidCatch() {
-        console.log("DidCatch")
-    }
 
     render() {
         console.log("render");
         return (
-            <div>{`${this.props.num ? this.props.num : "none"} | ${this.state.text} | ${ii}`}</div>
+            <div>{`${this.props.num ? this.props.num : "none"} | ${this.state.text}`}</div>
         )
     }
 }
